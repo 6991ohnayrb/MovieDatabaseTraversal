@@ -56,6 +56,7 @@
 				$query = "select id from MaxPersonID;";
 				$rs = mysql_query($query, $db_connection);
 				$maxID = mysql_fetch_row($rs)[0];
+				$maxID = $maxID + 1;
 
 				if (isset($_POST['type'])) {
 					$type = $_POST['type'];
@@ -102,9 +103,8 @@
 				}
 
 				if ($filled == "true") {
-					if ($type == "Actor") {
-						
-					}
+					$query = "INSERT INTO $type VALUES ($maxID, $lName, $fName, $gender, $dob, $dod);";
+					echo $query;
 				}
 			}
 
