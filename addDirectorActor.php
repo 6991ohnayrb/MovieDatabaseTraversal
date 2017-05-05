@@ -103,8 +103,13 @@
 				}
 
 				if ($filled == "true") {
-					$query = "INSERT INTO $type VALUES ($maxID, $lName, $fName, $gender, $dob, $dod);";
-					echo $query;
+					$query = "INSERT INTO $type VALUES ($maxID, '$lName', '$fName', '$gender', '$dob', '$dod');";
+					echo $query."<br>";
+					mysql_query($query, $db_connection) or die('Error, insert query failed');
+
+					$query = "UPDATE MaxPersonID SET id = $maxID;";
+					echo $query."<br>";
+					mysql_query($query, $db_connection);
 				}
 			}
 
