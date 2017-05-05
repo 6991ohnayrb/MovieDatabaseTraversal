@@ -6,6 +6,10 @@
 	</head>
 	<body>
 		<p>
+			<form name="testForm" id="testForm"  method="POST"  >
+				<input type="submit" name="Back" value="Back" autofocus onclick="return true;"/> <br>
+			</form>
+
 			<strong> Add New Actor or Director </strong> <br>
 
 			<form action="" method="POST"  >
@@ -30,6 +34,15 @@
 				<input type="submit" class="button" name="insert" value="Add to Database" />
 			</form>
 		</p>
+
+		<?php
+			if(isset($_POST['Back'])) {
+				echo " 	<script type=\"text/javascript\">
+							var e = document.getElementById('testForm'); e.action='./home.php'; e.submit();
+						</script>
+					 ";
+			}
+ 		?>
 
 		<?php
 
