@@ -45,10 +45,8 @@
 			$dob = "";
 			$dod = "";
 
-			$db_connection = mysql_connect($servername, $username, $password);
-			mysql_select_db($dbname, $db_connection);
-			$query = $_GET["query"];
-			$rs = mysql_query($query, $db_connection);
+			$maxID = "";
+
 
 			if (isset($_POST['insert'])) {
 				if (isset($_POST['type'])) {
@@ -61,6 +59,15 @@
 				}
 				$dob = $_POST['birth'];
 				$dod = $_POST['death'];
+
+				if ($type == "Actor") {
+					$db_connection = mysql_connect($servername, $username, $password);
+					mysql_select_db($dbname, $db_connection);
+					$query = "select id from MaxPersonID;";
+					$rs = mysql_query($query, $db_connection);
+					$maxID = mysql_fetch_row($rs)[0];
+				}
+
 			}
 
 		?>
