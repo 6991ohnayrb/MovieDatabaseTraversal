@@ -8,12 +8,10 @@
 		<p>
 			<strong> Add New Actor or Director </strong> <br>
 
-			<form name="testForm" id="testForm"  method="POST"  >
+			<form action="" method="POST"  >
 				<input type="radio" name="type" value="Actor"> Actor
   				<input type="radio" name="type" value="Director"> Director<br>
-			</form>
-
-			<form action="" method="GET">
+			
 				<strong> First Name </strong> <br>
 				<textarea name="first" cols="80" rows="1" placeholder="John"><?php
 						echo $_GET["query"];
@@ -23,14 +21,12 @@
 				<textarea name="last" cols="80" rows="1" placeholder="Doe"><?php
 						echo $_GET["query"];
 					?></textarea><br/>
-			</form>
+			
 
-			<form name="testForm" id="testForm"  method="POST"  >
 				<input type="radio" name="gender" value="Male"> Male
   				<input type="radio" name="gender" value="Female"> Female<br>
-			</form>
+			
 
-			<form action="" method="GET">
 				<strong> Date of Birth </strong> <br>
 				<textarea name="birth" cols="80" rows="1" placeholder="1970-01-01"><?php
 						echo $_GET["query"];
@@ -40,9 +36,29 @@
 				<textarea name="death" cols="80" rows="1" placeholder="2070-01-01"><?php
 						echo $_GET["query"];
 					?></textarea><br/>
+			
+				<input type="submit" class="button" name="insert" value="Add to Database" />
 			</form>
-
 		</p>
+
+		<?php
+
+			$servername = "localhost";
+			$username = "cs143";
+			$password = "";
+			$dbname = "CS143";
+
+			$db_connection = mysql_connect($servername, $username, $password);
+			mysql_select_db($dbname, $db_connection);
+			$query = $_GET["query"];
+			$rs = mysql_query($query, $db_connection);
+
+			if (isset($_POST['insert'])) {
+				if (isset($_POST['type']))
+				echo $_POST['type'];
+			}
+
+		?>
 
 	</body>
 </html>
