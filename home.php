@@ -33,6 +33,12 @@
 						</script>
 					 ";
 			}
+			if(isset($_POST['PageI2'])) {
+				echo " 	<script type=\"text/javascript\">
+							var e = document.getElementById('testForm'); e.action='./addMovie.php'; e.submit();
+						</script>
+					 ";
+			}
  		?>
 
 	</body>
