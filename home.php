@@ -39,6 +39,13 @@
 						</script>
 					 ";
 			}
+
+			if(isset($_POST['PageI3'])) {
+				echo " 	<script type=\"text/javascript\">
+							var e = document.getElementById('testForm'); e.action='./addMovieComment.php'; e.submit();
+						</script>
+					 ";
+			}
  		?>
 
 	</body>
