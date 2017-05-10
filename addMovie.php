@@ -14,10 +14,10 @@
 
 			<form action="" method="POST"  >
 				<strong> Title </strong> <br>
-				<textarea name="first" cols="80" rows="1" placeholder="Enter Movie Title"></textarea><br><br>
+				<textarea name="title" cols="80" rows="1" placeholder="Enter Movie Title"></textarea><br><br>
 
 				<strong> Release Year </strong> <br>
-				<textarea name="last" cols="80" rows="1" placeholder="Enter Movie Release Year"></textarea><br><br>
+				<textarea name="year" cols="80" rows="1" placeholder="Enter Movie Release Year"></textarea><br><br>
 
 				<strong> MPAA Rating </strong> <br>
 				<select>
@@ -27,6 +27,9 @@
 					<option value="PG-13">PG-13</option>
 					<option value="R">R</option>
 				</select> <br> <br>
+
+				<strong> Production Company </strong> <br>
+				<textarea name="company" cols="80" rows="1" placeholder="Enter Production Company"></textarea><br><br>
 			
 				<input type="submit" class="button" name="insert" value="Add to Database" />
 			</form>
