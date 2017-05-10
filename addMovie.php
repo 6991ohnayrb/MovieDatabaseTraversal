@@ -105,6 +105,16 @@
 					$filled = "false";
 				}
 
+				if ($filled == "true") {
+					$query = "INSERT INTO Movie VALUES ($maxID, '$title', $year, '$rating', '$company');";
+					echo $query."<br>";
+					mysql_query($query, $db_connection) or die('Error, insert query failed');
+
+					$query = "UPDATE MaxMovieID SET id = $maxID;";
+					echo $query."<br>";
+					mysql_query($query, $db_connection);
+				}
+
 			}
 		?>
 
