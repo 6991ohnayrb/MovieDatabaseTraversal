@@ -21,6 +21,7 @@
 
 				<strong> MPAA Rating </strong> <br>
 				<select name="rating">
+					<option value="null">-----</option>
 					<option value="G">G</option>
 					<option value="NC-17">NC-17</option>
 					<option value="PG">PG</option>
@@ -69,9 +70,40 @@
 				$maxID = $maxID + 1;
 
 				$title = $_POST['title'];
+				if ($title == "") {
+					echo "Please enter a value for title<br>";
+					$filled = "false";
+				}
+				else if (strlen($title) > 100) {
+					echo "Please enter a title shorter than 100 characters<br>";
+					$filled = "false";
+				}
+
 				$year = $_POST['year'];
+				if ($year == "") {
+					echo "Please enter a value for year<br>";
+					$filled = "false";
+				}
+				else if (!preg_match("/[0-9]{4}/", $year)) {
+					echo "Please enter a year in the format YYYY<br>";
+					$filled = "false";
+				}
+
 				$rating = $_POST['rating'];
+				if ($rating == "null") {
+					echo "Please enter a value for rating<br>";
+					$filled = "false";
+				}
+
 				$company = $_POST['company'];
+				if ($company == "") {
+					echo "Please enter a value for production company<br>";
+					$filled = "false";
+				}
+				else if (strlen($company) > 50) {
+					echo "Please enter a production company shorter than 50 characters<br>";
+					$filled = "false";
+				}
 
 			}
 		?>
