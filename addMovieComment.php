@@ -24,7 +24,7 @@
 
 				<strong> Comments </strong> <br>
 				<textarea name="comments" cols="80" rows="1" placeholder="Enter Comments"></textarea><br><br>
-				
+
 				<input type="submit" class="button" name="insert" value="Add to Database" />
 
 			</form>
@@ -38,6 +38,30 @@
 					 ";
 			}
  		?>
+
+ 		<?php
+
+			$servername = "localhost";
+			$username = "cs143";
+			$password = "";
+			$dbname = "CS143";
+
+			$name = "";
+			$date = "";
+			$mid = "";
+			$rating = "";
+			$comments = "";
+
+			$filled = "true";
+
+			$db_connection = mysql_connect($servername, $username, $password);
+			mysql_select_db($dbname, $db_connection);
+
+			if (isset($_POST['insert'])) {
+				$date = date("Y:m:d h:m:s");
+				echo $date . "<br>";
+			}
+		?>
 
 	</body>
 </html>
