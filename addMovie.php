@@ -44,6 +44,37 @@
 			}
  		?>
 
+ 		<?php
+
+			$servername = "localhost";
+			$username = "cs143";
+			$password = "";
+			$dbname = "CS143";
+
+			$type = "";
+			$fName = "";
+			$lName = "";
+			$gender = "";
+			$dob = "";
+			$dod = "";
+
+			$maxID = "";
+
+			$filled = "true";
+
+			$db_connection = mysql_connect($servername, $username, $password);
+			mysql_select_db($dbname, $db_connection);
+
+			if (isset($_POST['insert'])) {
+				$query = "select id from MaxMovieID;";
+				$rs = mysql_query($query, $db_connection);
+				$maxID = mysql_fetch_row($rs)[0];
+				$maxID = $maxID + 1;
+
+				
+			}
+		?>
+
 	</body>
 </html>
  <br>
