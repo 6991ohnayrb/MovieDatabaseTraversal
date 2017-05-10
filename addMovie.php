@@ -20,7 +20,7 @@
 				<textarea name="year" cols="80" rows="1" placeholder="Enter Movie Release Year"></textarea><br><br>
 
 				<strong> MPAA Rating </strong> <br>
-				<select>
+				<select name="rating">
 					<option value="G">G</option>
 					<option value="NC-17">NC-17</option>
 					<option value="PG">PG</option>
@@ -51,14 +51,11 @@
 			$password = "";
 			$dbname = "CS143";
 
-			$type = "";
-			$fName = "";
-			$lName = "";
-			$gender = "";
-			$dob = "";
-			$dod = "";
-
 			$maxID = "";
+			$title = "";
+			$year = "";
+			$rating = "";
+			$company = "";
 
 			$filled = "true";
 
@@ -71,7 +68,11 @@
 				$maxID = mysql_fetch_row($rs)[0];
 				$maxID = $maxID + 1;
 
-				
+				$title = $_POST['title'];
+				$year = $_POST['year'];
+				$rating = $_POST['rating'];
+				$company = $_POST['company'];
+
 			}
 		?>
 
