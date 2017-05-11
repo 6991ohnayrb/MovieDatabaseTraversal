@@ -6,9 +6,9 @@
 	</head>
 	<body>
 		<p>
-			<strong> Please select from one of the following buttons below: </strong> <br> <br>
+			<strong> Please select from one of the following buttons below: </strong> <br>
 
-			<form name="testForm" id="testForm"  method="POST"  >
+			<form name="inputPagesForm" id="inputPagesForm"  method="POST"  >
 				A page that lets users to add actor and/or director information. Here are some name examples: Chu-Cheng Hsieh, J'son Lee, etc. <br>
 			    <input type="submit" name="PageI1" value="Page I1" autofocus onclick="return true;"/> <br> <br>
 
@@ -29,34 +29,34 @@
 		<?php
 			if(isset($_POST['PageI1'])) {
 				echo " 	<script type=\"text/javascript\">
-							var e = document.getElementById('testForm'); e.action='./addDirectorActor.php'; e.submit();
+							var e = document.getElementById('inputPagesForm'); e.action='./addDirectorActor.php'; e.submit();
 						</script>
 					 ";
 			}
 			if(isset($_POST['PageI2'])) {
 				echo " 	<script type=\"text/javascript\">
-							var e = document.getElementById('testForm'); e.action='./addMovie.php'; e.submit();
+							var e = document.getElementById('inputPagesForm'); e.action='./addMovie.php'; e.submit();
 						</script>
 					 ";
 			}
 
 			if(isset($_POST['PageI3'])) {
 				echo " 	<script type=\"text/javascript\">
-							var e = document.getElementById('testForm'); e.action='./addMovieComment.php'; e.submit();
+							var e = document.getElementById('inputPagesForm'); e.action='./addMovieComment.php'; e.submit();
 						</script>
 					 ";
 			}
 
 			if(isset($_POST['PageI4'])) {
 				echo " 	<script type=\"text/javascript\">
-							var e = document.getElementById('testForm'); e.action='./addMovieActor.php'; e.submit();
+							var e = document.getElementById('inputPagesForm'); e.action='./addMovieActor.php'; e.submit();
 						</script>
 					 ";
 			}
 
 			if(isset($_POST['PageI5'])) {
 				echo " 	<script type=\"text/javascript\">
-							var e = document.getElementById('testForm'); e.action='./addMovieDirector.php'; e.submit();
+							var e = document.getElementById('inputPagesForm'); e.action='./addMovieDirector.php'; e.submit();
 						</script>
 					 ";
 			}
