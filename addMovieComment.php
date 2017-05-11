@@ -103,6 +103,12 @@
 					$filled = "false";
 				}
 
+				if ($filled == "true") {
+					$query = "INSERT INTO Review VALUES ('$name', '$date', $mid, $rating, '$comments');";
+					echo $query."<br>";
+					mysql_query($query, $db_connection) or die('Error, insert query failed');
+				}
+
 			}
 		?>
 
