@@ -53,6 +53,13 @@
 						</script>
 					 ";
 			}
+
+			if(isset($_POST['PageI5'])) {
+				echo " 	<script type=\"text/javascript\">
+							var e = document.getElementById('testForm'); e.action='./addMovieDirector.php'; e.submit();
+						</script>
+					 ";
+			}
  		?>
 
 	</body>
