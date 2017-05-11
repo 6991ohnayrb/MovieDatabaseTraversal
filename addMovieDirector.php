@@ -69,6 +69,12 @@
 					$filled = "false";
 				}
 
+				if ($filled == "true") {
+					$query = "INSERT INTO MovieDirector VALUES ($mid, $did);";
+					echo $query."<br>";
+					mysql_query($query, $db_connection) or die('Error, insert query failed');
+				}
+
 			}
 		?>
 
