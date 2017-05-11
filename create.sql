@@ -50,7 +50,7 @@ CREATE TABLE MovieDirector(
 CREATE TABLE MovieActor(
 	mid int, 
 	aid int, 
-	role int,
+	role varchar(50),
 	FOREIGN KEY(mid) references Movie(id),
 	FOREIGN KEY(aid) references Actor(id)) ENGINE=INNODB;
 
