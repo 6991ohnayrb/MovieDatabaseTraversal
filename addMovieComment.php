@@ -82,7 +82,7 @@
 					echo "Please enter a value for movie ID<br>";
 					$filled = "false";
 				}
-				else if (!preg_match("/^[0-9]$*/", $mid)) {
+				else if (!preg_match("/^[0-9]*$/", $mid)) {
 					echo "Movie ID can consist of only numbers<br>";
 					$filled = "false";
 				}
