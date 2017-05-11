@@ -45,9 +45,13 @@
 
 			if (isset($_POST['insert'])) {
 				$keyword = $_POST['keyword'];
-				$param = "%".$keyword."%";
-				echo $param."<br>";
-				$query = "select * from Actor where first like \"$param\" or last like \"$param\";";
+				$keyword = str_replace(" ", "|", $keyword);
+				if (strpos($keyword, "|") === false) {
+					$query = "select * from Actor where first like '$keyword' or last like '$keyword';";
+				}
+				else {
+					$query = "select * from Actor where first REGEXP '$keyword' and last REGEXP '$keyword';";
+				}
 				$rs = mysql_query($query, $db_connection);
 
 				echo "<table><tr>";
