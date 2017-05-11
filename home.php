@@ -24,13 +24,10 @@
 			    <input type="submit" name="PageI5" value="Page I5" autofocus onclick="return true;"/> <br> <br>
 			</form>
 
-			<strong> Browsing Pages: </strong>
-			<form name="browsingPagesForm" id="browsingPagesForm"  method="POST"  >
-			    A page that shows actor information. <br>
-			    <input type="submit" name="PageB1" value="Page B1" autofocus onclick="return true;"/> <br> <br>
-
-			    A page that shows movie information. <br>
-			    <input type="submit" name="PageB2" value="Page B2" autofocus onclick="return true;"/> <br> <br>
+			<strong> Search Page: </strong>
+			<form name="searchForm" id="searchForm"  method="POST"  >
+			    A page that lets users search for an actor/actress/movie through a keyword search interface. <br>
+			    <input type="submit" name="PageS1" value="Page S1" autofocus onclick="return true;"/> <br> <br>
 			</form>
 		</p>
 
@@ -69,9 +66,9 @@
 					 ";
 			}
 
-			if(isset($_POST['PageB1'])) {
+			if(isset($_POST['PageS1'])) {
 				echo " 	<script type=\"text/javascript\">
-							var e = document.getElementById('browsingPagesForm'); e.action='./showActorInfo.php'; e.submit();
+							var e = document.getElementById('searchForm'); e.action='./search.php'; e.submit();
 						</script>
 					 ";
 			}
