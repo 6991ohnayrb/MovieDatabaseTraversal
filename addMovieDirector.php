@@ -33,6 +33,45 @@
 			}
  		?>
 
+ 		<?php
+
+			$servername = "localhost";
+			$username = "cs143";
+			$password = "";
+			$dbname = "CS143";
+
+			$mid = "";
+			$did = "";
+
+			$filled = "true";
+
+			$db_connection = mysql_connect($servername, $username, $password);
+			mysql_select_db($dbname, $db_connection);
+
+			if (isset($_POST['insert'])) {
+				$mid = $_POST['mid'];
+				if ($mid == "") {
+					echo "Please enter a value for movie ID<br>";
+					$filled = "false";
+				}
+				else if (!preg_match("/^[0-9]*$/", $mid)) {
+					echo "Movie ID can consist of only numbers<br>";
+					$filled = "false";
+				}
+
+				$did = $_POST['did'];
+				if ($did == "") {
+					echo "Please enter a value for director ID<br>";
+					$filled = "false";
+				}
+				else if (!preg_match("/^[0-9]*$/", $did)) {
+					echo "Director ID can consist of only numbers<br>";
+					$filled = "false";
+				}
+
+			}
+		?>
+
 	</body>
 </html>
  <br>
