@@ -6,8 +6,7 @@
 	</head>
 	<body>
 		<p>
-			<strong> Please select from one of the following buttons below: </strong> <br>
-
+			<strong> Input Pages: </strong>
 			<form name="inputPagesForm" id="inputPagesForm"  method="POST"  >
 				A page that lets users to add actor and/or director information. Here are some name examples: Chu-Cheng Hsieh, J'son Lee, etc. <br>
 			    <input type="submit" name="PageI1" value="Page I1" autofocus onclick="return true;"/> <br> <br>
@@ -22,7 +21,16 @@
 			    <input type="submit" name="PageI4" value="Page I4" autofocus onclick="return true;"/> <br> <br>
 
 			    A page that lets users to add "director to movie" relation(s). <br>
-			    <input type="submit" name="PageI5" value="Page I5" autofocus onclick="return true;"/>
+			    <input type="submit" name="PageI5" value="Page I5" autofocus onclick="return true;"/> <br> <br>
+			</form>
+
+			<strong> Browsing Pages: </strong>
+			<form name="browsingPagesForm" id="browsingPagesForm"  method="POST"  >
+			    A page that shows actor information. <br>
+			    <input type="submit" name="PageB1" value="Page B1" autofocus onclick="return true;"/> <br> <br>
+
+			    A page that shows movie information. <br>
+			    <input type="submit" name="PageB2" value="Page B2" autofocus onclick="return true;"/> <br> <br>
 			</form>
 		</p>
 
