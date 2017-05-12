@@ -13,7 +13,7 @@
 			<strong> Search Actor or Movie </strong> <br>
 
 			<form action="" method="POST"  >
-				<strong> Actor Name </strong> <br>
+				<strong> Search Keyword </strong> <br>
 				<textarea name="keyword" cols="80" rows="1" placeholder="Enter a Keyword"></textarea><br><br>
 
 				<input type="submit" class="button" name="insert" value="Search Database" />
