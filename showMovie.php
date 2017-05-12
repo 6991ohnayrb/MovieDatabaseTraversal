@@ -44,25 +44,29 @@
 
 			if (isset($_GET['insert'])) {
 				$mid = $_GET['mid'];
+
 				$query = "select * from Movie where id = $mid;";
-				echo $query."<br>";
 				$rs = mysql_query($query, $db_connection);
+				$title = mysql_fetch_row($rs)[1];
+				echo "Title: ".$title."<br>";
 
-				echo "<strong> Matching Movies </strong> <br>";
-				echo "<table><tr>";
-				for($i = 0; $i < mysql_num_fields($rs); $i++) {
-				    $field_info = mysql_fetch_field($rs, $i);
-				    echo "<th>{$field_info->name}</th>";
-				}
+				$rs = mysql_query($query, $db_connection);
+				$producer = mysql_fetch_row($rs)[4];
+				echo "Producer: ".$producer."<br>";
 
-				while($row = mysql_fetch_row($rs)) {
-				    echo "<tr>";
-				    foreach($row as $_column) {
-				        echo "<td>{$_column}</td>";
-				    }
-				    echo "</tr>";
-				}
-				echo "</table>";
+				$rs = mysql_query($query, $db_connection);
+				$title = mysql_fetch_row($rs)[3];
+				echo "MPAA Rating: ".$title."<br>";
+
+				$query = "(select concat_ws(' ', first, last) from Director where id = (select did from MovieDirector where mid = $mid);)";
+				$rs = mysql_query($query, $db_connection);
+				$director = mysql_fetch_row($rs)[0];
+				echo "Director: ".$director."<br>";
+
+				$query = "select genre from MovieGenre where mid = $mid;";
+				$rs = mysql_query($query, $db_connection);
+				$genre = mysql_fetch_row($rs)[0];
+				echo "Genre: ".$genre."<br>";
 
 			}
 		?>
