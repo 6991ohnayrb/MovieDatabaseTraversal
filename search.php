@@ -47,7 +47,7 @@
 				$keyword = $_POST['keyword'];
 				$keyword = str_replace(" ", "|", $keyword);
 				if (strpos($keyword, "|") === false) {
-					$query = "select * from Actor where first like '$keyword' or last like '$keyword';";
+					$query = "select * from Actor where first like '%$keyword%' or last like '%$keyword%';";
 				}
 				else {
 					$query = "select * from Actor where first REGEXP '$keyword' and last REGEXP '$keyword';";
