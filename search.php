@@ -52,8 +52,7 @@
 				}
 				$str = substr($str, 0, -4);
 
-				$query = "select * from Actor where$str;";
-				echo $query."<br>";
+				$query = "select concat_ws(' ', first, ' ',last) as Name, dob as \"Date of Birth\" from Actor where$str;";
 
 				$rs = mysql_query($query, $db_connection);
 
@@ -79,8 +78,7 @@
 				}
 				$str = substr($str, 0, -4);
 
-				$query = "select * from Movie where$str;";
-				echo $query."<br>";
+				$query = "select title as Title, year as Year from Movie where$str;";
 				$rs = mysql_query($query, $db_connection);
 
 				echo "<strong> Matching Movies </strong> <br>";
