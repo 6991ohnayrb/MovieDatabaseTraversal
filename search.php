@@ -45,15 +45,19 @@
 
 			if (isset($_POST['insert'])) {
 				$keyword = $_POST['keyword'];
-				$keyword = str_replace(" ", "|", $keyword);
-				if (strpos($keyword, "|") === false) {
-					$query = "select * from Actor where first like '%$keyword%' or last like '%$keyword%';";
+				$arr = explode(" ", $keyword);
+				$str = "";
+				foreach($arr as $val) {
+					$str .= " concat_ws(' ', first, last) like '%$val%' AND";
 				}
-				else {
-					$query = "select * from Actor where first REGEXP '$keyword' and last REGEXP '$keyword';";
-				}
+				$str = substr($str, 0, -4);
+
+				$query = "select * from Actor where$str;";
+				echo $query."<br>";
+
 				$rs = mysql_query($query, $db_connection);
 
+				echo "<strong> Matching Actors </strong> <br>";
 				echo "<table><tr>";
 				for($i = 0; $i < mysql_num_fields($rs); $i++) {
 				    $field_info = mysql_fetch_field($rs, $i);
@@ -67,7 +71,32 @@
 				    }
 				    echo "</tr>";
 				}
+				echo "</table><br><br>";
 
+				$str = "";
+				foreach($arr as $val) {
+					$str .= " title like '%$val%' AND";
+				}
+				$str = substr($str, 0, -4);
+
+				$query = "select * from Movie where$str;";
+				echo $query."<br>";
+				$rs = mysql_query($query, $db_connection);
+
+				echo "<strong> Matching Movies </strong> <br>";
+				echo "<table><tr>";
+				for($i = 0; $i < mysql_num_fields($rs); $i++) {
+				    $field_info = mysql_fetch_field($rs, $i);
+				    echo "<th>{$field_info->name}</th>";
+				}
+
+				while($row = mysql_fetch_row($rs)) {
+				    echo "<tr>";
+				    foreach($row as $_column) {
+				        echo "<td>{$_column}</td>";
+				    }
+				    echo "</tr>";
+				}
 				echo "</table>";
 
 			}
