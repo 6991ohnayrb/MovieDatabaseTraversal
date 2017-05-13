@@ -23,13 +23,14 @@
 			    A page that lets users to add "director to movie" relation(s). <br>
 			    <input type="submit" name="PageI5" value="Page I5" autofocus onclick="return true;"/> <br> <br>
 			</form>
-
+			
+		<p>
 			<strong> Search Page: </strong>
 			<form name="searchForm" id="searchForm"  method="POST"  >
 			    A page that lets users search for an actor/actress/movie through a keyword search interface. <br>
 			    <input type="submit" name="PageS1" value="Page S1" autofocus onclick="return true;"/> <br> <br>
 			</form>
-		</p>
+
 
 		<?php
 			if(isset($_POST['PageI1'])) {
