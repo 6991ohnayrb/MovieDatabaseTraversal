@@ -59,6 +59,9 @@
 
 							<strong> Production Company </strong> <br>
 							<textarea name="company" cols="80" rows="1" placeholder="Enter Production Company"></textarea><br><br>
+
+							<strong> Genre </strong> <br>
+							<textarea name="genre" cols="80" rows="1" placeholder="Enter Movie Genre"></textarea><br><br>
 						
 							<input type="submit" class="button" name="insert" value="Add to Database" />
 						</form>
@@ -85,6 +88,7 @@
 						$year = "";
 						$rating = "";
 						$company = "";
+						$genre = "";
 
 						$filled = "true";
 
@@ -133,8 +137,22 @@
 								$filled = "false";
 							}
 
+							$genre = $_POST['genre'];
+							if ($genre == "") {
+								echo "Please enter a value for genre<br>";
+								$filled = "false";
+							}
+							else if (strlen($genre) > 20) {
+								echo "Please enter a genre shorter than 20 characters<br>";
+								$filled = "false";
+							}
+
 							if ($filled == "true") {
 								$query = "INSERT INTO Movie VALUES ($maxID, '$title', $year, '$rating', '$company');";
+								echo $query."<br>";
+								mysql_query($query, $db_connection) or die('Error, insert query failed');
+
+								$query = "INSERT INTO MovieGenre VALUES ($maxID, '$genre');";
 								echo $query."<br>";
 								mysql_query($query, $db_connection) or die('Error, insert query failed');
 
