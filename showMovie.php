@@ -82,25 +82,25 @@
 								$query = "select * from Movie where id = $mid;";
 								$rs = mysql_query($query, $db_connection);
 								$title = mysql_fetch_row($rs)[1];
-								echo "Title: ".$title."<br>";
+								echo "<strong>Title: </strong>".$title."<br>";
 
 								$rs = mysql_query($query, $db_connection);
 								$producer = mysql_fetch_row($rs)[4];
-								echo "Producer: ".$producer."<br>";
+								echo "<strong>Producer: </strong>".$producer."<br>";
 
 								$rs = mysql_query($query, $db_connection);
 								$rating = mysql_fetch_row($rs)[3];
-								echo "MPAA Rating: ".$rating."<br>";
+								echo "<strong>MPAA Rating: </strong>".$rating."<br>";
 
 								$query = "(select concat_ws(' ', first, last) from Director where id = (select did from MovieDirector where mid = $mid);)";
 								$rs = mysql_query($query, $db_connection);
 								$director = mysql_fetch_row($rs)[0];
-								echo "Director: ".$director."<br>";
+								echo "<strong>Director: </strong>".$director."<br>";
 
 								$query = "select genre from MovieGenre where mid = $mid;";
 								$rs = mysql_query($query, $db_connection);
 								$genre = mysql_fetch_row($rs)[0];
-								echo "Genre: ".$genre."<br><br><br>";
+								echo "<strong>Genre: </strong>".$genre."<br><br><br>";
 
 								$query = "select concat_ws(' ', A.first, A.last) as Name, MA.role as Role from Actor as A, MovieActor as MA where MA.mid = $mid and A.id = MA.aid;";
 								$rs = mysql_query($query, $db_connection);
