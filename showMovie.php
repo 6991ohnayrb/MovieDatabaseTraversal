@@ -44,74 +44,80 @@
 
 			if (isset($_GET['insert'])) {
 				$mid = $_GET['mid'];
-
-				$query = "select * from Movie where id = $mid;";
-				$rs = mysql_query($query, $db_connection);
-				$title = mysql_fetch_row($rs)[1];
-				echo "Title: ".$title."<br>";
-
-				$rs = mysql_query($query, $db_connection);
-				$producer = mysql_fetch_row($rs)[4];
-				echo "Producer: ".$producer."<br>";
-
-				$rs = mysql_query($query, $db_connection);
-				$title = mysql_fetch_row($rs)[3];
-				echo "MPAA Rating: ".$title."<br>";
-
-				$query = "(select concat_ws(' ', first, last) from Director where id = (select did from MovieDirector where mid = $mid);)";
-				$rs = mysql_query($query, $db_connection);
-				$director = mysql_fetch_row($rs)[0];
-				echo "Director: ".$director."<br>";
-
-				$query = "select genre from MovieGenre where mid = $mid;";
-				$rs = mysql_query($query, $db_connection);
-				$genre = mysql_fetch_row($rs)[0];
-				echo "Genre: ".$genre."<br><br><br>";
-
-				$query = "select concat_ws(' ', A.first, A.last) as Name, MA.role as Role from Actor as A, MovieActor as MA where MA.mid = $mid and A.id = MA.aid;";
-				$rs = mysql_query($query, $db_connection);
-
-				echo "<table><tr>";
-				for($i = 0; $i < mysql_num_fields($rs); $i++) {
-				    $field_info = mysql_fetch_field($rs, $i);
-				    echo "<th>{$field_info->name}</th>";
+				if ($mid == "") {
+					echo "Please enter a value into movie ID<br>";
 				}
-
-				while($row = mysql_fetch_row($rs)) {
-					$query3 = "select id from Actor where concat_ws(' ', first, last) = \"$row[0]\";";
-					$rs3 = mysql_query($query3, $db_connection);
-					$aid = mysql_fetch_row($rs3)[0];
-				    echo "<tr>";
-				    foreach($row as $_column) {
-				        echo "<td><a href=\"showActor.php?aid=$aid&insert=Search+Database\">{$_column}</a></td>";
-				    }
-				    echo "</tr>";
+				else if (!preg_match("/^[0-9]*$/", $mid)) {
+					echo "Movie ID consists of only number<br>";
 				}
-				echo "</table>";
+				else {
+					$query = "select * from Movie where id = $mid;";
+					$rs = mysql_query($query, $db_connection);
+					$title = mysql_fetch_row($rs)[1];
+					echo "Title: ".$title."<br>";
 
-				$query = "select avg(rating) as \"Average Score\" from Review where mid = $mid;";
-				$rs = mysql_query($query, $db_connection);
-				$rating = mysql_fetch_row($rs)[0];
-				echo "<br><br>Average User Rating: ".$rating."<br><br>";
+					$rs = mysql_query($query, $db_connection);
+					$producer = mysql_fetch_row($rs)[4];
+					echo "Producer: ".$producer."<br>";
 
-				$query = "select comment as \"User Comments\" from Review where mid = $mid;";
-				$rs = mysql_query($query, $db_connection);
-				echo "<table><tr>";
-				for($i = 0; $i < mysql_num_fields($rs); $i++) {
-				    $field_info = mysql_fetch_field($rs, $i);
-				    echo "<th>{$field_info->name}</th>";
+					$rs = mysql_query($query, $db_connection);
+					$title = mysql_fetch_row($rs)[3];
+					echo "MPAA Rating: ".$title."<br>";
+
+					$query = "(select concat_ws(' ', first, last) from Director where id = (select did from MovieDirector where mid = $mid);)";
+					$rs = mysql_query($query, $db_connection);
+					$director = mysql_fetch_row($rs)[0];
+					echo "Director: ".$director."<br>";
+
+					$query = "select genre from MovieGenre where mid = $mid;";
+					$rs = mysql_query($query, $db_connection);
+					$genre = mysql_fetch_row($rs)[0];
+					echo "Genre: ".$genre."<br><br><br>";
+
+					$query = "select concat_ws(' ', A.first, A.last) as Name, MA.role as Role from Actor as A, MovieActor as MA where MA.mid = $mid and A.id = MA.aid;";
+					$rs = mysql_query($query, $db_connection);
+
+					echo "<table><tr>";
+					for($i = 0; $i < mysql_num_fields($rs); $i++) {
+					    $field_info = mysql_fetch_field($rs, $i);
+					    echo "<th>{$field_info->name}</th>";
+					}
+
+					while($row = mysql_fetch_row($rs)) {
+						$query3 = "select id from Actor where concat_ws(' ', first, last) = \"$row[0]\";";
+						$rs3 = mysql_query($query3, $db_connection);
+						$aid = mysql_fetch_row($rs3)[0];
+					    echo "<tr>";
+					    foreach($row as $_column) {
+					        echo "<td><a href=\"showActor.php?aid=$aid&insert=Search+Database\">{$_column}</a></td>";
+					    }
+					    echo "</tr>";
+					}
+					echo "</table>";
+
+					$query = "select avg(rating) as \"Average Score\" from Review where mid = $mid;";
+					$rs = mysql_query($query, $db_connection);
+					$rating = mysql_fetch_row($rs)[0];
+					echo "<br><br>Average User Rating: ".$rating."<br><br>";
+
+					$query = "select comment as \"User Comments\" from Review where mid = $mid;";
+					$rs = mysql_query($query, $db_connection);
+					echo "<table><tr>";
+					for($i = 0; $i < mysql_num_fields($rs); $i++) {
+					    $field_info = mysql_fetch_field($rs, $i);
+					    echo "<th>{$field_info->name}</th>";
+					}
+
+					while($row = mysql_fetch_row($rs)) {
+					    echo "<tr>";
+					    foreach($row as $_column) {
+					        echo "<td>{$_column}</td>";
+					    }
+					    echo "</tr>";
+					}
+
+					echo "</table>";
 				}
-
-				while($row = mysql_fetch_row($rs)) {
-				    echo "<tr>";
-				    foreach($row as $_column) {
-				        echo "<td>{$_column}</td>";
-				    }
-				    echo "</tr>";
-				}
-
-				echo "</table>";
-
 			}
 		?>
 
