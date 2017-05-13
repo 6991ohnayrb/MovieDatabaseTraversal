@@ -27,6 +27,7 @@
 						<p><strong>&nbsp;&nbsp;Add Content</strong></p>
 						<li><a href="addDirectorActor.php">Add Actor or Director</a></li>
 						<li><a href="addMovie.php">Add Movie Information</a></li>
+						<li><a href="addMovieComment.php">Add Movie Comments</a></li>
 						<li><a href="addMovieActor.php">Add Movie or Actor Relation</a></li>
 						<li><a href="addMovieDirector.php">Add Movie or Director Relation</a></li>
 					</ul>
