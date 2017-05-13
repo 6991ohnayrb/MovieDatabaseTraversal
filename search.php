@@ -52,7 +52,7 @@
 				}
 				$str = substr($str, 0, -4);
 
-				$query = "select concat_ws(' ', first, ' ',last) as Name, dob as \"Date of Birth\" from Actor where$str;";
+				$query = "select concat_ws(' ', first, last) as Name, dob as \"Date of Birth\" from Actor where$str;";
 
 				$rs = mysql_query($query, $db_connection);
 
@@ -64,9 +64,13 @@
 				}
 
 				while($row = mysql_fetch_row($rs)) {
+					$query2 = "select id from Actor where concat_ws(' ', first, last) = \"$row[0]\";";
+					$rs2 = mysql_query($query2, $db_connection);
+					$aid = mysql_fetch_row($rs2)[0];
+				    
 				    echo "<tr>";
 				    foreach($row as $_column) {
-				        echo "<td>{$_column}</td>";
+				        echo "<td><a href=\"showActor.php?aid=$aid&insert=Search+Database\">{$_column}</a></td>";
 				    }
 				    echo "</tr>";
 				}
