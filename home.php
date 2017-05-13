@@ -1,80 +1,44 @@
-<html>
+<html lang="en">
 	<head>
-		<title>
-			CS143 Project 1B
-		</title>
-	</head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>CS143 Project 1B</title>
+
+		<!-- Bootstrap -->
+		<link href="bootstrap.min.css" rel="stylesheet">
+		<link href="project1c.css" rel="stylesheet">
+
 	<body>
-		<p>
-			<strong> Input Pages: </strong>
-			<form name="inputPagesForm" id="inputPagesForm"  method="POST"  >
-				A page that lets users to add actor and/or director information. Here are some name examples: Chu-Cheng Hsieh, J'son Lee, etc. <br>
-			    <input type="submit" name="PageI1" value="Page I1" autofocus onclick="return true;"/> <br> <br>
 
-				A page that lets users to add movie information. <br>
-			    <input type="submit" name="PageI2" value="Page I2" autofocus onclick="return true;"/> <br> <br>
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header navbar-defalt">
+					<a class="navbar-brand" href="index.php">CS143 Database Interface</a>
+				</div>
+			</div>
+		</nav>
 
-			    A page that lets users to add comments to movies. <br>
-			    <input type="submit" name="PageI3" value="Page I3" autofocus onclick="return true;"/> <br> <br>
-
-			    A page that lets users to add "actor to movie" relation(s). <br>
-			    <input type="submit" name="PageI4" value="Page I4" autofocus onclick="return true;"/> <br> <br>
-
-			    A page that lets users to add "director to movie" relation(s). <br>
-			    <input type="submit" name="PageI5" value="Page I5" autofocus onclick="return true;"/> <br> <br>
-			</form>
-			
-		<p>
-			<strong> Search Page: </strong>
-			<form name="searchForm" id="searchForm"  method="POST"  >
-			    A page that lets users search for an actor/actress/movie through a keyword search interface. <br>
-			    <input type="submit" name="PageS1" value="Page S1" autofocus onclick="return true;"/> <br> <br>
-			</form>
-
-
-		<?php
-			if(isset($_POST['PageI1'])) {
-				echo " 	<script type=\"text/javascript\">
-							var e = document.getElementById('inputPagesForm'); e.action='./addDirectorActor.php'; e.submit();
-						</script>
-					 ";
-			}
-			if(isset($_POST['PageI2'])) {
-				echo " 	<script type=\"text/javascript\">
-							var e = document.getElementById('inputPagesForm'); e.action='./addMovie.php'; e.submit();
-						</script>
-					 ";
-			}
-
-			if(isset($_POST['PageI3'])) {
-				echo " 	<script type=\"text/javascript\">
-							var e = document.getElementById('inputPagesForm'); e.action='./addMovieComment.php'; e.submit();
-						</script>
-					 ";
-			}
-
-			if(isset($_POST['PageI4'])) {
-				echo " 	<script type=\"text/javascript\">
-							var e = document.getElementById('inputPagesForm'); e.action='./addMovieActor.php'; e.submit();
-						</script>
-					 ";
-			}
-
-			if(isset($_POST['PageI5'])) {
-				echo " 	<script type=\"text/javascript\">
-							var e = document.getElementById('inputPagesForm'); e.action='./addMovieDirector.php'; e.submit();
-						</script>
-					 ";
-			}
-
-			if(isset($_POST['PageS1'])) {
-				echo " 	<script type=\"text/javascript\">
-							var e = document.getElementById('searchForm'); e.action='./search.php'; e.submit();
-						</script>
-					 ";
-			}
- 		?>
-
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-3 col-md-2 sidebar">
+					<ul class="nav nav-sidebar">
+						<p><strong>&nbsp;&nbsp;Add Content</strong></p>
+						<li><a href="addDirectorActor.php">Add Actor or Director</a></li>
+						<li><a href="addMovie.php">Add Movie Information</a></li>
+						<li><a href="addMovieActor.php">Add Movie or Actor Relation</a></li>
+						<li><a href="addMovieDirector.php">Add Movie or Director Relation</a></li>
+					</ul>
+					<ul class="nav nav-sidebar">
+						<p><strong>&nbsp;&nbsp;Search Keywords</strong></p>
+						<li><a href="search.php">Search Actor or Movie</a></li>
+					</ul>
+				</div>
+				<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+					<h3><b>PLEASE SELECT ONE OF THE BUTTONS ON THE LEFT</b></h3>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>
- <br>
