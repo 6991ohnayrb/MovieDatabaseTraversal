@@ -38,11 +38,7 @@
 				</div>
 				<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 					<p>
-						<form name="testForm" id="testForm"  method="POST"  >
-							<input type="submit" name="Back" value="Back" autofocus onclick="return true;"/> <br>
-						</form>
-
-						<strong> Add Movie Actor </strong> <br>
+						<h3><b>Add Movie Actor Relation</b></h3><br>
 
 						<form action="" method="POST"  >
 							<strong> Movie ID </strong> <br>
