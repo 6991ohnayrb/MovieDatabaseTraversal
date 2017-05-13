@@ -45,7 +45,7 @@
 				</div>
 				<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 					<p>
-						<strong> Add New Actor or Director </strong> <br>
+						<h3><b>Add Actor or Director</b></h3><br>
 
 						<form action="" method="POST"  >
 							<input type="radio" name="type" value="Actor"> Actor
