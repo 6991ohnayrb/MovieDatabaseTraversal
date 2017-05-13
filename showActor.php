@@ -44,50 +44,53 @@
 
 			if (isset($_GET['insert'])) {
 				$aid = $_GET['aid'];
-
-				$query = "select concat_ws(' ', first, last) as Name, sex as Sex, dob as \"Date of Birth\", dod as \"Date of Death\" from Actor where id = $aid;";
-				$rs = mysql_query($query, $db_connection);
-				
-				echo "<table><tr>";
-				for($i = 0; $i < mysql_num_fields($rs); $i++) {
-				    $field_info = mysql_fetch_field($rs, $i);
-				    echo "<th>{$field_info->name}</th>";
+				if ($aid == "") {
+					echo "Please enter a value into actor ID<br>";
 				}
-
-				while($row = mysql_fetch_row($rs)) {
-				    echo "<tr>";
-				    foreach($row as $_column) {
-				        echo "<td>{$_column}</td>";
-				    }
-				    echo "</tr>";
+				else if (!preg_match("/^[0-9]*$/", $aid)) {
+					echo "Actor ID consists of only number<br>";
 				}
+				else {
+					$query = "select concat_ws(' ', first, last) as Name, sex as Sex, dob as \"Date of Birth\", dod as \"Date of Death\" from Actor where id = $aid;";
+					$rs = mysql_query($query, $db_connection);
+					
+					echo "<table><tr>";
+					for($i = 0; $i < mysql_num_fields($rs); $i++) {
+					    $field_info = mysql_fetch_field($rs, $i);
+					    echo "<th>{$field_info->name}</th>";
+					}
 
-				echo "</table><br>";
+					while($row = mysql_fetch_row($rs)) {
+					    echo "<tr>";
+					    foreach($row as $_column) {
+					        echo "<td>{$_column}</td>";
+					    }
+					    echo "</tr>";
+					}
 
-				$query = "select M.title as Title, MA.role as Role from Movie as M, MovieActor as MA where MA.mid = M.id and MA.aid = $aid;";
-				$rs = mysql_query($query, $db_connection);
-				
-				echo "<table><tr>";
-				for($i = 0; $i < mysql_num_fields($rs); $i++) {
-				    $field_info = mysql_fetch_field($rs, $i);
-				    echo "<th>{$field_info->name}</th>";
+					echo "</table><br>";
+
+					$query = "select M.title as Title, MA.role as Role from Movie as M, MovieActor as MA where MA.mid = M.id and MA.aid = $aid;";
+					$rs = mysql_query($query, $db_connection);
+					
+					echo "<table><tr>";
+					for($i = 0; $i < mysql_num_fields($rs); $i++) {
+					    $field_info = mysql_fetch_field($rs, $i);
+					    echo "<th>{$field_info->name}</th>";
+					}
+
+					while($row = mysql_fetch_row($rs)) {
+						$query3 = "select id from Movie where title = \"$row[0]\";";
+						$rs3 = mysql_query($query3, $db_connection);
+						$mid = mysql_fetch_row($rs3)[0];
+					    echo "<tr>";
+					    foreach($row as $_column) {
+					        echo "<td><a href=\"showMovie.php?mid=$mid&insert=Search+Database\">{$_column}</a></td>";
+					    }
+					    echo "</tr>";
+					}
+					echo "</table>";
 				}
-
-				while($row = mysql_fetch_row($rs)) {
-					$query3 = "select id from Movie where title = \"$row[0]\";";
-					$rs3 = mysql_query($query3, $db_connection);
-					$mid = mysql_fetch_row($rs3)[0];
-				    echo "<tr>";
-				    foreach($row as $_column) {
-				        echo "<td><a href=\"showMovie.php?mid=$mid&insert=Search+Database\">{$_column}</a></td>";
-				    }
-				    echo "</tr>";
-				}
-
-				echo "</table>";
-
-				
-
 			}
 		?>
 
