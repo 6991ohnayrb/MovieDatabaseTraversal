@@ -7,8 +7,8 @@
 		<title>CS143 Project 1B</title>
 
 		<!-- Bootstrap -->
-		<link href="bootstrap.min.css" rel="stylesheet">
-		<link href="project1c.css" rel="stylesheet">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/project1c.css" rel="stylesheet">
 
 	<body>
 
