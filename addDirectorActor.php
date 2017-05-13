@@ -52,19 +52,19 @@
 			  				<input type="radio" name="type" value="Director"> Director<br><br>
 						
 							<strong> First Name </strong> <br>
-							<textarea name="first" cols="80" rows="1" placeholder="John"></textarea><br/><br>
+							<textarea name="first" cols="80" rows="1" placeholder="Enter a First Name"></textarea><br/><br>
 
 							<strong> Last Name </strong> <br>
-							<textarea name="last" cols="80" rows="1" placeholder="Doe"></textarea><br/><br>
+							<textarea name="last" cols="80" rows="1" placeholder="Enter a Last Name"></textarea><br/><br>
 						
 							<input type="radio" name="gender" value="Male"> Male
 			  				<input type="radio" name="gender" value="Female"> Female<br><br>
 						
 							<strong> Date of Birth </strong> <br>
-							<textarea name="birth" cols="80" rows="1" placeholder="1970-01-01"></textarea><br/><br>
+							<textarea name="birth" cols="80" rows="1" placeholder="Enter a Date of Birth (YYYY-MM-DD)"></textarea><br/><br>
 
 							<strong> Date of Death </strong> (leave blank if still alive) <br>
-							<textarea name="death" cols="80" rows="1" placeholder="2070-01-01"></textarea><br/><br>
+							<textarea name="death" cols="80" rows="1" placeholder="Enter a Date of Death (YYYY-MM-DD)"></textarea><br/><br>
 						
 							<input type="submit" class="button" name="insert" value="Add to Database" />
 						</form>
