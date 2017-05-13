@@ -66,7 +66,26 @@
 				$query = "select genre from MovieGenre where mid = $mid;";
 				$rs = mysql_query($query, $db_connection);
 				$genre = mysql_fetch_row($rs)[0];
-				echo "Genre: ".$genre."<br>";
+				echo "Genre: ".$genre."<br><br><br>";
+
+				$query = "select concat_ws(' ', A.first, A.last) as Name, MA.role as Role from Actor as A, MovieActor as MA where MA.mid = $mid and A.id = MA.aid;";
+				$rs = mysql_query($query, $db_connection);
+
+				echo "<table><tr>";
+				for($i = 0; $i < mysql_num_fields($rs); $i++) {
+				    $field_info = mysql_fetch_field($rs, $i);
+				    echo "<th>{$field_info->name}</th>";
+				}
+
+				while($row = mysql_fetch_row($rs)) {
+				    echo "<tr>";
+				    foreach($row as $_column) {
+				        echo "<td>{$_column}</td>";
+				    }
+				    echo "</tr>";
+				}
+
+				echo "</table>";
 
 			}
 		?>
