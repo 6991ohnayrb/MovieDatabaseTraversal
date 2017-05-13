@@ -78,9 +78,12 @@
 				}
 
 				while($row = mysql_fetch_row($rs)) {
+					$query3 = "select id from Actor where concat_ws(' ', first, last) = \"$row[0]\";";
+					$rs3 = mysql_query($query3, $db_connection);
+					$aid = mysql_fetch_row($rs3)[0];
 				    echo "<tr>";
 				    foreach($row as $_column) {
-				        echo "<td>{$_column}</td>";
+				        echo "<td><a href=\"showActor.php?aid=$aid&insert=Search+Database\">{$_column}</a></td>";
 				    }
 				    echo "</tr>";
 				}
