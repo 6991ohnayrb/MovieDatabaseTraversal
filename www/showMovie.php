@@ -92,7 +92,7 @@
 								$rating = mysql_fetch_row($rs)[3];
 								echo "<strong>MPAA Rating: </strong>".$rating."<br>";
 
-								$query = "(select concat_ws(' ', first, last) from Director where id = (select did from MovieDirector where mid = $mid);)";
+								$query = "select concat_ws(' ', D.first, D.last) from Director as D, MovieDirector as MD where D.id = MD.mid and MD.mid = $mid;";
 								$rs = mysql_query($query, $db_connection);
 								$director = mysql_fetch_row($rs)[0];
 								echo "<strong>Director: </strong>".$director."<br>";
