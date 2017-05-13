@@ -87,6 +87,11 @@
 
 				echo "</table>";
 
+				$query = "select avg(rating) as \"Average Score\" from Review where mid = $mid;";
+				$rs = mysql_query($query, $db_connection);
+				$rating = mysql_fetch_row($rs)[0];
+				echo "<br><br>Average User Rating: ".$rating."<br>";
+
 			}
 		?>
 
