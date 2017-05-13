@@ -45,43 +45,30 @@
 				</div>
 				<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 					<p>
-						<form name="testForm" id="testForm"  method="POST"  >
-							<input type="submit" name="Back" value="Back" autofocus onclick="return true;"/> <br>
-						</form>
-
 						<strong> Add New Actor or Director </strong> <br>
 
 						<form action="" method="POST"  >
 							<input type="radio" name="type" value="Actor"> Actor
-			  				<input type="radio" name="type" value="Director"> Director<br>
+			  				<input type="radio" name="type" value="Director"> Director<br><br>
 						
 							<strong> First Name </strong> <br>
-							<textarea name="first" cols="80" rows="1" placeholder="John"></textarea><br/>
+							<textarea name="first" cols="80" rows="1" placeholder="John"></textarea><br/><br>
 
 							<strong> Last Name </strong> <br>
-							<textarea name="last" cols="80" rows="1" placeholder="Doe"></textarea><br/>
+							<textarea name="last" cols="80" rows="1" placeholder="Doe"></textarea><br/><br>
 						
 							<input type="radio" name="gender" value="Male"> Male
-			  				<input type="radio" name="gender" value="Female"> Female<br>
+			  				<input type="radio" name="gender" value="Female"> Female<br><br>
 						
 							<strong> Date of Birth </strong> <br>
-							<textarea name="birth" cols="80" rows="1" placeholder="1970-01-01"></textarea><br/>
+							<textarea name="birth" cols="80" rows="1" placeholder="1970-01-01"></textarea><br/><br>
 
 							<strong> Date of Death </strong> (leave blank if still alive) <br>
-							<textarea name="death" cols="80" rows="1" placeholder="2070-01-01"></textarea><br/>
+							<textarea name="death" cols="80" rows="1" placeholder="2070-01-01"></textarea><br/><br>
 						
 							<input type="submit" class="button" name="insert" value="Add to Database" />
 						</form>
 					</p>
-
-					<?php
-						if(isset($_POST['Back'])) {
-							echo " 	<script type=\"text/javascript\">
-										var e = document.getElementById('testForm'); e.action='./home.php'; e.submit();
-									</script>
-								 ";
-						}
-			 		?>
 
 					<?php
 
