@@ -15,7 +15,7 @@
 		<nav class="navbar navbar-inverse navbar-fixed-top">
 			<div class="container-fluid">
 				<div class="navbar-header navbar-defalt">
-					<a class="navbar-brand" href="index.php">CS143 Database Interface</a>
+					<a class="navbar-brand" href="home.php">CS143 Database Interface</a>
 				</div>
 			</div>
 		</nav>
@@ -27,6 +27,7 @@
 						<p><strong>&nbsp;&nbsp;Add Content</strong></p>
 						<li><a href="addDirectorActor.php">Add Actor or Director</a></li>
 						<li><a href="addMovie.php">Add Movie Information</a></li>
+						<li><a href="addMovieComment.php">Add Movie Comments</a></li>
 						<li><a href="addMovieActor.php">Add Movie or Actor Relation</a></li>
 						<li><a href="addMovieDirector.php">Add Movie or Director Relation</a></li>
 					</ul>

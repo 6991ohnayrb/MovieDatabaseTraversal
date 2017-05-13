@@ -15,7 +15,7 @@
 		<nav class="navbar navbar-inverse navbar-fixed-top">
 			<div class="container-fluid">
 				<div class="navbar-header navbar-defalt">
-					<a class="navbar-brand" href="index.php">CS143 Database Interface</a>
+					<a class="navbar-brand" href="home.php">CS143 Database Interface</a>
 				</div>
 			</div>
 		</nav>
