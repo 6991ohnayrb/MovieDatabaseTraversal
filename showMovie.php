@@ -84,13 +84,30 @@
 				    }
 				    echo "</tr>";
 				}
-
 				echo "</table>";
 
 				$query = "select avg(rating) as \"Average Score\" from Review where mid = $mid;";
 				$rs = mysql_query($query, $db_connection);
 				$rating = mysql_fetch_row($rs)[0];
-				echo "<br><br>Average User Rating: ".$rating."<br>";
+				echo "<br><br>Average User Rating: ".$rating."<br><br>";
+
+				$query = "select comment as \"User Comments\" from Review where mid = $mid;";
+				$rs = mysql_query($query, $db_connection);
+				echo "<table><tr>";
+				for($i = 0; $i < mysql_num_fields($rs); $i++) {
+				    $field_info = mysql_fetch_field($rs, $i);
+				    echo "<th>{$field_info->name}</th>";
+				}
+
+				while($row = mysql_fetch_row($rs)) {
+				    echo "<tr>";
+				    foreach($row as $_column) {
+				        echo "<td>{$_column}</td>";
+				    }
+				    echo "</tr>";
+				}
+
+				echo "</table>";
 
 			}
 		?>
