@@ -38,11 +38,7 @@
 				</div>
 				<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 					<p>
-						<form name="testForm" id="testForm"  method="GET"  >
-							<input type="submit" name="Back" value="Back" autofocus onclick="return true;"/> <br>
-						</form>
-
-						<strong> Show Actor Information </strong> <br>
+						<h3><b>Show Actor Information</b></h3><br>
 
 						<form action="" method="GET"  >
 							<strong> Search Actor ID </strong> <br>
