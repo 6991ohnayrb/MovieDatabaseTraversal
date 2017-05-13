@@ -5,78 +5,121 @@
 		</title>
 	</head>
 	<body>
-		<p>
-			<form name="testForm" id="testForm"  method="POST"  >
-				<input type="submit" name="Back" value="Back" autofocus onclick="return true;"/> <br>
-			</form>
+		<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-			<strong> Add Movie Director </strong> <br>
+		<title>CS143 Project 1B</title>
 
-			<form action="" method="POST"  >
-				<strong> Movie ID </strong> <br>
-				<textarea name="mid" cols="80" rows="1" placeholder="Enter Movie ID"></textarea><br><br>
+		<!-- Bootstrap -->
+		<link href="bootstrap.min.css" rel="stylesheet">
+		<link href="project1c.css" rel="stylesheet">
 
-				<strong> Director ID </strong> <br>
-				<textarea name="did" cols="80" rows="1" placeholder="Enter Director ID"></textarea><br><br>
+	<body>
 
-				<input type="submit" class="button" name="insert" value="Add to Database" />
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header navbar-defalt">
+					<a class="navbar-brand" href="index.php">CS143 Database Interface</a>
+				</div>
+			</div>
+		</nav>
 
-			</form>
-		</p>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-3 col-md-2 sidebar">
+					<ul class="nav nav-sidebar">
+						<p><strong>&nbsp;&nbsp;Add Content</strong></p>
+						<li><a href="addDirectorActor.php">Add Actor or Director</a></li>
+						<li><a href="addMovie.php">Add Movie Information</a></li>
+						<li><a href="addMovieActor.php">Add Movie or Actor Relation</a></li>
+						<li><a href="addMovieDirector.php">Add Movie or Director Relation</a></li>
+					</ul>
+					<ul class="nav nav-sidebar">
+						<p><strong>&nbsp;&nbsp;Search Keywords</strong></p>
+						<li><a href="search.php">Search Actor or Movie</a></li>
+					</ul>
+				</div>
+				<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+					<p>
+						<form name="testForm" id="testForm"  method="POST"  >
+							<input type="submit" name="Back" value="Back" autofocus onclick="return true;"/> <br>
+						</form>
 
-		<?php
-			if(isset($_POST['Back'])) {
-				echo " 	<script type=\"text/javascript\">
-							var e = document.getElementById('testForm'); e.action='./home.php'; e.submit();
-						</script>
-					 ";
-			}
- 		?>
+						<strong> Add Movie Director </strong> <br>
 
- 		<?php
+						<form action="" method="POST"  >
+							<strong> Movie ID </strong> <br>
+							<textarea name="mid" cols="80" rows="1" placeholder="Enter Movie ID"></textarea><br><br>
 
-			$servername = "localhost";
-			$username = "cs143";
-			$password = "";
-			$dbname = "CS143";
+							<strong> Director ID </strong> <br>
+							<textarea name="did" cols="80" rows="1" placeholder="Enter Director ID"></textarea><br><br>
 
-			$mid = "";
-			$did = "";
+							<input type="submit" class="button" name="insert" value="Add to Database" />
 
-			$filled = "true";
+						</form>
+					</p>
 
-			$db_connection = mysql_connect($servername, $username, $password);
-			mysql_select_db($dbname, $db_connection);
+					<?php
+						if(isset($_POST['Back'])) {
+							echo " 	<script type=\"text/javascript\">
+										var e = document.getElementById('testForm'); e.action='./home.php'; e.submit();
+									</script>
+								 ";
+						}
+			 		?>
 
-			if (isset($_POST['insert'])) {
-				$mid = $_POST['mid'];
-				if ($mid == "") {
-					echo "Please enter a value for movie ID<br>";
-					$filled = "false";
-				}
-				else if (!preg_match("/^[0-9]*$/", $mid)) {
-					echo "Movie ID can consist of only numbers<br>";
-					$filled = "false";
-				}
+			 		<?php
 
-				$did = $_POST['did'];
-				if ($did == "") {
-					echo "Please enter a value for director ID<br>";
-					$filled = "false";
-				}
-				else if (!preg_match("/^[0-9]*$/", $did)) {
-					echo "Director ID can consist of only numbers<br>";
-					$filled = "false";
-				}
+						$servername = "localhost";
+						$username = "cs143";
+						$password = "";
+						$dbname = "CS143";
 
-				if ($filled == "true") {
-					$query = "INSERT INTO MovieDirector VALUES ($mid, $did);";
-					echo $query."<br>";
-					mysql_query($query, $db_connection) or die('Error, insert query failed');
-				}
+						$mid = "";
+						$did = "";
 
-			}
-		?>
+						$filled = "true";
+
+						$db_connection = mysql_connect($servername, $username, $password);
+						mysql_select_db($dbname, $db_connection);
+
+						if (isset($_POST['insert'])) {
+							$mid = $_POST['mid'];
+							if ($mid == "") {
+								echo "Please enter a value for movie ID<br>";
+								$filled = "false";
+							}
+							else if (!preg_match("/^[0-9]*$/", $mid)) {
+								echo "Movie ID can consist of only numbers<br>";
+								$filled = "false";
+							}
+
+							$did = $_POST['did'];
+							if ($did == "") {
+								echo "Please enter a value for director ID<br>";
+								$filled = "false";
+							}
+							else if (!preg_match("/^[0-9]*$/", $did)) {
+								echo "Director ID can consist of only numbers<br>";
+								$filled = "false";
+							}
+
+							if ($filled == "true") {
+								$query = "INSERT INTO MovieDirector VALUES ($mid, $did);";
+								echo $query."<br>";
+								mysql_query($query, $db_connection) or die('Error, insert query failed');
+							}
+
+						}
+					?>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
 
 	</body>
 </html>
