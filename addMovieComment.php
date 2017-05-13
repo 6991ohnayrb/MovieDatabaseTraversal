@@ -17,7 +17,9 @@
 				<textarea name="name" cols="80" rows="1" placeholder="Enter Reviewer Name"></textarea><br><br>
 
 				<strong> Movie ID </strong> <br>
-				<textarea name="mid" cols="80" rows="1" placeholder="Enter Movie ID"></textarea><br><br>
+				<textarea name="mid" cols="80" rows="1" placeholder="Enter Movie ID"><?php
+						echo $_GET['mid'];
+					?></textarea><br><br>
 
 				<strong> Movie Rating </strong> <br>
 				<select name="rating">

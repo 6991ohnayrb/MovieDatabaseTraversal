@@ -122,10 +122,15 @@
 		?>
 
 		<p>
-			<form name="addCommentForm" id="addCommentForm"  method="POST"  >
-				<input type="submit" name="Add Comment" value="Add Comment" autofocus onclick="return true;"/> <br>
-			</form>
+		<?php
+			$mid = $_GET['mid'];
+			echo $mid;
+			echo " 	<form action=\"addMovieComment.php?mid=".$mid."\" name=\"addCommentForm\" id=\"addCommentForm\"  method=\"POST\"  >";
+ 		?>
+	 		<input type="submit" name="Add Comment" value="Add Comment" autofocus onclick="return true;"/> <br>
+		</form>
 		</p>
+
 
 	</body>
 </html>
