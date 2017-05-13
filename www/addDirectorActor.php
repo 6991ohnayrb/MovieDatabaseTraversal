@@ -142,7 +142,12 @@
 							}
 
 							if ($filled == "true") {
-								$query = "INSERT INTO $type VALUES ($maxID, '$lName', '$fName', '$gender', '$dob', '$dod');";
+								if ($type == "Actor") {
+									$query = "INSERT INTO $type VALUES ($maxID, '$lName', '$fName', '$gender', '$dob', '$dod');";
+								}
+								else {
+									$query = "INSERT INTO $type VALUES ($maxID, '$lName', '$fName', '$dob', '$dod');";
+								}
 								echo $query."<br>";
 								mysql_query($query, $db_connection) or die('Error, insert query failed');
 
