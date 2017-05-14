@@ -41,11 +41,49 @@
 						<h3><b>Add Movie Actor Relation</b></h3><br>
 
 						<form action="" method="POST"  >
-							<strong> Movie ID </strong> <br>
-							<textarea name="mid" cols="80" rows="1" placeholder="Enter Movie ID"></textarea><br><br>
+							<strong> Select a Movie from Below </strong> <br>
+							<?php
+								$servername = "localhost";
+								$username = "cs143";
+								$password = "";
+								$dbname = "CS143";
 
-							<strong> Actor ID </strong> <br>
-							<textarea name="aid" cols="80" rows="1" placeholder="Enter Actor ID"></textarea><br><br>
+								$db_connection = mysql_connect($servername, $username, $password);
+								mysql_select_db($dbname, $db_connection);
+
+								$query = "select title from Movie;";
+								$rs = mysql_query($query, $db_connection);
+
+								echo '<select name="selectMovie">';
+								while($row = mysql_fetch_row($rs)) {
+								    foreach($row as $column) {
+								    	echo '<option value="'.$column.'">'.$column.'</option>';
+								    }
+								}
+								echo '</select><br><br>';
+							?>
+
+							<strong> Select an Actor from Below </strong> <br>
+							<?php
+								$servername = "localhost";
+								$username = "cs143";
+								$password = "";
+								$dbname = "CS143";
+
+								$db_connection = mysql_connect($servername, $username, $password);
+								mysql_select_db($dbname, $db_connection);
+
+								$query = "select concat_ws(' ', first, last) from Actor;";
+								$rs = mysql_query($query, $db_connection);
+
+								echo '<select name="selectActor">';
+								while($row = mysql_fetch_row($rs)) {
+								    foreach($row as $column) {
+								    	echo '<option value="'.$column.'">'.$column.'</option>';
+								    }
+								}
+								echo '</select><br><br>';
+							?>
 
 							<strong> Actor Role </strong> <br>
 							<textarea name="role" cols="80" rows="1" placeholder="Enter Actor Role in Movie"></textarea><br><br>
@@ -65,7 +103,6 @@
 			 		?>
 
 			 		<?php
-
 						$servername = "localhost";
 						$username = "cs143";
 						$password = "";
@@ -81,25 +118,9 @@
 						mysql_select_db($dbname, $db_connection);
 
 						if (isset($_POST['insert'])) {
-							$mid = $_POST['mid'];
-							if ($mid == "") {
-								echo "Please enter a value for movie ID<br>";
-								$filled = "false";
-							}
-							else if (!preg_match("/^[0-9]*$/", $mid)) {
-								echo "Movie ID can only contain numbers<br>";
-								$filled = false;
-							}
+							$movie = $_POST['selectMovie'];
 
-							$aid = $_POST['aid'];
-							if ($aid == "") {
-								echo "Please enter a value for actor ID<br>";
-								$filled = "false";
-							}
-							else if (!preg_match("/^[0-9]*$/", $aid)) {
-								echo "Actor ID can only contain numbers<br>";
-								$filled = "false";
-							}
+							$actor = $_POST['selectActor'];
 
 							$role = $_POST['role'];
 							if ($role == "") {
@@ -112,11 +133,18 @@
 							}
 
 							if ($filled == "true") {
+								$query = "select id from Movie where title = \"$movie\";";
+								$rs = mysql_query($query, $db_connection);
+								$mid = mysql_fetch_row($rs)[0];
+
+								$query = "select id from Actor where concat_ws(' ', first, last) = \"$actor\";";
+								$rs = mysql_query($query, $db_connection);
+								$aid = mysql_fetch_row($rs)[0];
+
 								$query = "INSERT INTO MovieActor VALUES ($mid, $aid, '$role');";
 								echo $query."<br>";
 								mysql_query($query, $db_connection) or die('Error, insert query failed');
 							}
-
 						}
 					?>
 				</div>
