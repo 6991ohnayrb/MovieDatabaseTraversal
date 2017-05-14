@@ -73,7 +73,7 @@
 								$db_connection = mysql_connect($servername, $username, $password);
 								mysql_select_db($dbname, $db_connection);
 
-								$query = "select concat_ws(' ', first, last) from Actor;";
+								$query = "select concat_ws(' ', first, last) from Actor order by first;";
 								$rs = mysql_query($query, $db_connection);
 
 								echo '<select name="selectActor">';
